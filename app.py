@@ -14,6 +14,7 @@ from pystocktopus.stock_csv import CSVDataHandler
 from tkinter import filedialog, messagebox
 import threading
 
+
 def main():
     # Function to handle the submission of API keys
     def submit_keys():
@@ -44,9 +45,13 @@ def main():
 
         # Display the welcome message
         welcome_label = tk.Label(
-            root, text="Welcome to PYSTOCKTOPUS!", font=("Arial", 24)
+            root,
+            text="Welcome to PYSTOCKTOPUS!",
+            font=("Helvetica", 28, "bold"),
+            bg="lightblue",
+            fg="darkblue",
         )
-        welcome_label.pack(pady=20)
+        welcome_label.pack(pady=30)
 
         # Create buttons for button 1, button 2, button 3
         button1 = tk.Button(
@@ -55,8 +60,12 @@ def main():
             command=show_button_screen_CSV,
             width=30,
             height=2,
+            font=("Helvetica", 12, "bold"),
+            bg="#e06c75",
+            fg="white",
+            activebackground="#4f63b2",
         )
-        button1.pack(pady=10)
+        button1.pack(pady=15)
 
         button2 = tk.Button(
             root,
@@ -64,8 +73,12 @@ def main():
             command=show_button_screen_PRED,
             width=30,
             height=2,
+            font=("Helvetica", 12, "bold"),
+            bg="#e06c75",
+            fg="white",
+            activebackground="#b25255",
         )
-        button2.pack(pady=10)
+        button2.pack(pady=15)
 
         button3 = tk.Button(
             root,
@@ -73,6 +86,10 @@ def main():
             command=show_button_screen_NEWS,
             width=30,
             height=2,
+            font=("Helvetica", 12, "bold"),
+            bg="#e06c75",
+            fg="white",
+            activebackground="#b25255",
         )
         button3.pack(pady=10)
 
@@ -80,9 +97,9 @@ def main():
         footer_label = tk.Label(
             root,
             text="Developed by Akhil Sharma",
-            bg="#f0f4f7",
+            bg="lightblue",
             fg="#888888",
-            font=("Helvetica Neue", 10),
+            font=("Helvetica", 10, "italic"),
         )
         footer_label.pack(side=tk.BOTTOM, pady=10)
 
@@ -92,15 +109,23 @@ def main():
             widget.destroy()
 
         # Display welcome message specific to the CSV Generator
-        label = tk.Label(root, text="CSV Generator", font=("Arial", 24))
+        label = tk.Label(
+            root,
+            text="CSV Generator",
+            font=("Helvetica", 24, "bold"),
+            bg="lightblue",
+            fg="darkblue",
+        )
         label.pack(pady=20)
 
         # Frame for Start Date and End Date
-        date_frame = tk.Frame(root)
+        date_frame = tk.Frame(root, bg="lightblue")
         date_frame.pack(pady=10)
 
         # Start Date
-        start_label = tk.Label(date_frame, text="Start Date (YYYY-MM-DD):")
+        start_label = tk.Label(
+            date_frame, text="Start Date (YYYY-MM-DD):", bg="lightblue", fg="darkblue"
+        )
         start_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         # Use DateEntry for the start date
@@ -113,7 +138,7 @@ def main():
         default_values = ["GOOGL", "day", "1", "340"]
 
         # Frame for Name Entries
-        name_frame = tk.Frame(root)
+        name_frame = tk.Frame(root, bg="lightblue")
         name_frame.pack(pady=10)
 
         name_labels = [
@@ -125,7 +150,7 @@ def main():
         name_entries = []
 
         for i, name in enumerate(name_labels):
-            lbl = tk.Label(name_frame, text=name)
+            lbl = tk.Label(name_frame, text=name, bg="lightblue", fg="darkblue")
             lbl.grid(row=i, column=0, padx=5, pady=5, sticky="e")
 
             entry = tk.Entry(name_frame)
@@ -134,17 +159,24 @@ def main():
             name_entries.append(entry)
 
         # Frame for filename entry
-        filename_frame = tk.Frame(root)
+        filename_frame = tk.Frame(root, bg="lightblue")
         filename_frame.pack(pady=10)
 
-        filename_label = tk.Label(filename_frame, text="CSV Filename (optional):")
+        filename_label = tk.Label(
+            filename_frame,
+            text="CSV Filename (optional):",
+            bg="lightblue",
+            fg="darkblue",
+        )
         filename_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
 
         filename_entry = tk.Entry(filename_frame)
         filename_entry.insert(0, "GUI_GENERATED_DATA.csv")  # Default value
         filename_entry.grid(row=0, column=1, padx=5, pady=5)
 
-        result_label = tk.Label(root, text="", font=("Arial", 12), fg="red")
+        result_label = tk.Label(
+            root, text="", font=("Arial", 12), fg="red", bg="lightblue"
+        )
         result_label.pack(pady=10)
 
         # Function to generate CSV
@@ -193,7 +225,14 @@ def main():
 
         # Generate CSV button
         generate_button = tk.Button(
-            root, text="Generate CSV", command=generate_csv, width=20
+            root,
+            text="Generate CSV",
+            command=generate_csv,
+            width=20,
+            font=("Helvetica", 12, "bold"),
+            bg="#61afef",
+            fg="white",
+            activebackground="#4a8cc2",
         )
         generate_button.pack(pady=10)
 
@@ -209,10 +248,16 @@ def main():
             widget.destroy()
 
         # Display welcome message specific to the News Analysis
-        label = tk.Label(root, text="News Analysis", font=("Arial", 24))
+        label = tk.Label(
+            root,
+            text="Next Day Predictor of Closing Price",
+            font=("Helvetica", 24, "bold"),
+            bg="lightblue",
+            fg="darkblue",
+        )
         label.pack(pady=20)
 
-        name_frame = tk.Frame(root)
+        name_frame = tk.Frame(root, bg="lightblue")
         name_frame.pack(pady=10)
 
         # List of name labels
@@ -223,7 +268,9 @@ def main():
         ]
         name_entries = []
 
-        result_label = tk.Label(root, text="", font=("Arial", 12), fg="red")
+        result_label = tk.Label(
+            root, text="", font=("Arial", 12), fg="red", bg="lightblue"
+        )
         result_label.pack(pady=10)
 
         # Create labels and entry fields for each name, setting default value
@@ -332,13 +379,27 @@ def main():
 
         # Button to trigger news analysis
         analyze_button = tk.Button(
-            root, text="Analyze News", command=pred_value, width=20
+            root,
+            text="Let's Predict",
+            command=pred_value,
+            width=20,
+            font=("Helvetica", 12, "bold"),
+            bg="#61afef",
+            fg="white",
+            activebackground="#4a8cc2",
         )
         analyze_button.pack(pady=10)
 
         # Back button to return to the welcome screen
         back_button = tk.Button(
-            root, text="Back", command=show_welcome_screen, width=10
+            root,
+            text="Back",
+            command=show_welcome_screen,
+            width=10,
+            font=("Helvetica", 12, "bold"),
+            bg="#e06c75",
+            fg="white",
+            activebackground="#b25255",
         )
         back_button.pack(pady=10)
 
@@ -349,14 +410,20 @@ def main():
             widget.destroy()
 
         # Display welcome message specific to the News Analysis
-        label = tk.Label(root, text="News Analysis", font=("Arial", 24))
+        label = tk.Label(
+            root,
+            text="News Analysis",
+            font=("Helvetica", 24, "bold"),
+            bg="lightblue",
+            fg="darkblue",
+        )
         label.pack(pady=20)
 
         # Frame for Date and Name Entries
-        input_frame = tk.Frame(root)
+        input_frame = tk.Frame(root, bg="lightblue")
         input_frame.pack(pady=10)
 
-        name_frame = tk.Frame(root)
+        name_frame = tk.Frame(root, bg="lightblue")
         name_frame.pack(pady=10)
 
         # Add a DateEntry widget for start_date selection
@@ -373,12 +440,14 @@ def main():
         name_entries = []
 
         # Label to display results or errors
-        result_label = tk.Label(root, text="", font=("Arial", 12), fg="red")
+        result_label = tk.Label(
+            root, text="", font=("Arial", 12), fg="red", bg="lightblue"
+        )
         result_label.pack(pady=10)
 
         # Create labels and entry fields for each name, setting default value for Time stamp
         for i, name in enumerate(name_labels):
-            lbl = tk.Label(name_frame, text=name)
+            lbl = tk.Label(name_frame, text=name, bg="lightblue", fg="darkblue")
             lbl.grid(row=i, column=0, padx=5, pady=5, sticky="e")
 
             entry = tk.Entry(name_frame)
@@ -443,12 +512,26 @@ def main():
 
         # Button to trigger news analysis
         analyze_button = tk.Button(
-            root, text="Analyze News", command=analyze_news, width=20
+            root,
+            text="Analyze News",
+            command=analyze_news,
+            width=20,
+            font=("Helvetica", 12, "bold"),
+            bg="#61afef",
+            fg="white",
+            activebackground="#4a8cc2",
         )
         analyze_button.pack(pady=10)
 
         back_button = tk.Button(
-            root, text="Back", command=show_welcome_screen, width=10
+            root,
+            text="Back",
+            command=show_welcome_screen,
+            width=10,
+            font=("Helvetica", 12, "bold"),
+            bg="#e06c75",
+            fg="white",
+            activebackground="#b25255",
         )
         back_button.pack(pady=10)
 
@@ -456,6 +539,7 @@ def main():
     load_dotenv()
     root = tk.Tk()
     root.title("API Key Submission")
+    root.configure(bg="lightblue")
     root.geometry("400x500")
 
     # Check if the API keys are already set in the environment
@@ -467,12 +551,24 @@ def main():
         show_welcome_screen()
     else:
         # If keys are not found, prompt the user to enter them
-        label1 = tk.Label(root, text="Enter Polygon API KEY:", font=("Arial", 12))
-        label1.pack(pady=10)
+        label1 = tk.Label(
+            root,
+            text="Enter Polygon API KEY:",
+            font=("Helvetica", 24, "bold"),
+            bg="lightblue",
+            fg="darkblue",
+        )
+        label1.pack(pady=20)
         entry1 = tk.Entry(root, width=40)
         entry1.pack(pady=5)
 
-        label2 = tk.Label(root, text="Enter News API KEY:", font=("Arial", 12))
+        label2 = tk.Label(
+            root,
+            text="Enter News API KEY:",
+            font=("Helvetica", 24, "bold"),
+            bg="lightblue",
+            fg="darkblue",
+        )
         label2.pack(pady=10)
         entry2 = tk.Entry(root, width=40)
         entry2.pack(pady=5)
@@ -493,4 +589,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
